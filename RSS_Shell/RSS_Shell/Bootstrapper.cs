@@ -7,6 +7,7 @@ namespace RSS_Shell
 {
     public class Bootstrapper : UnityBootstrapper
     {
+        #region Methods
         protected override DependencyObject CreateShell()
         {
             return new Shell();
@@ -25,6 +26,7 @@ namespace RSS_Shell
 
             ModuleCatalog moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
             moduleCatalog.AddModule(typeof(RSSApplicationModule));
-        }
+        } 
+        #endregion
     }
 }

@@ -70,5 +70,8 @@
     <Content Include="Prism\Microsoft.Practices.ServiceLocation.dll" />
     <Content Include="Prism\Microsoft.Practices.Unity.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

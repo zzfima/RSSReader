@@ -15,6 +15,7 @@ namespace RSS_Module
         public void Initialize()
         {
             _regionManager.RegisterViewWithRegion("MainRegion", typeof(View.RSSReaderView));
+            _regionManager.RegisterViewWithRegion("TreeRegion", typeof(View.RSSReaderView));
         }
     }
 }

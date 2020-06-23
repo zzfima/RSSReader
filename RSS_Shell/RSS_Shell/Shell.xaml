@@ -3,5 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prsm="http://www.codeplex.com/prism"
         Title="Simple Prism Application" Height="450" Width="800">
-    <ItemsControl Name="MainRegion" prsm:RegionManager.RegionName="MainRegion"/>
+    <DockPanel>
+        <ItemsControl DockPanel.Dock="Left" Name="TreeRegion" prsm:RegionManager.RegionName="TreeRegion"/>
+        <ItemsControl Name="MainRegion" prsm:RegionManager.RegionName="MainRegion"/>
+    </DockPanel>
 </Window>
