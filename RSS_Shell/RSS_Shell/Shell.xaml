@@ -1,0 +1,7 @@
+﻿<Window x:Class="RSS_Shell.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prsm="http://www.codeplex.com/prism"
+        Title="Simple Prism Application" Height="450" Width="800">
+    <ItemsControl Name="MainRegion" prsm:RegionManager.RegionName="MainRegion"/>
+</Window>
