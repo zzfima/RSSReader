@@ -65,6 +65,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\FeedTitleStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\RSSReaderMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
