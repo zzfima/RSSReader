@@ -3,10 +3,77 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RSS_Module.View"
+             xmlns:local="clr-namespace:RSS_Module.Model"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Button>ZHOPA</Button>
-    </Grid>
+    
+    <UserControl.Resources>
+        <Style x:Key="FeedTitleStyle" TargetType="{x:Type Border}">
+            <Setter Property="Background" Value="#FFD68D36" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Yellow" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <local:Feeds x:Key="feeds">
+            <local:Feed Title="feed 1" Description="this is description feed 1" />
+            <local:Feed Title="this is bold feed 2 and this has a long title" Description="this is description feed 2" />
+        </local:Feeds>
+    </UserControl.Resources>
+
+    <ScrollViewer>
+        <StackPanel>
+            <Border CornerRadius="5,5,5,5" BorderThickness="1,1,1,1" BorderBrush="#FF060000" Margin="5,5,5,5">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF000000" Offset="0"/>
+                        <GradientStop Color="#FF3D4D3B" Offset="0.04"/>
+                        <GradientStop Color="#FF9F8C55" Offset="0.978"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <TextBlock FontSize="20" FontWeight="Bold" Margin="10" HorizontalAlignment="Center" Text="Simple RSS Reader" FontFamily="Rockwell" />
+            </Border>
+
+            <Grid x:Name="gvFeeds">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackPanel>
+                    <TextBox x:Name="txtUrl" Grid.Row="0" Grid.Column="0" Width="130" Height="20"   />
+                    <Button Click="Button_Click" Content="Add Subscription" Grid.Row="0" VerticalAlignment="Top" Height="25"  Grid.Column="0" Margin="10" Width="Auto" Background="#FF919137" FontSize="14" Foreground="#FF000000" FontWeight="Bold" />
+                </StackPanel>
+
+                <ItemsControl ItemsSource="{StaticResource feeds}" Grid.Row="0" Grid.Column="1" Margin="10" Width="Auto" x:Name="icFeeds" Background="{x:Null}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <StackPanel>
+                                    <Expander IsExpanded="False" >
+                                        <Expander.Header>
+                                            <Border Style="{StaticResource FeedTitleStyle}" Margin="5" BorderThickness="2" CornerRadius="2,2,2,2" BorderBrush="#FF00000C" >
+                                                <TextBlock Text="{Binding Path=Title}" Margin="5" FontSize="14" Foreground="#FF000000" />
+                                            </Border>
+                                        </Expander.Header>
+                                        <Expander.Content>
+                                            <Border Margin="30,5" BorderThickness="2,2,2,2" Background="#FFE06F12" CornerRadius="2,2,2,2" BorderBrush="#FF0A0000">
+                                                <TextBlock TextAlignment="Left" Width="200" TextWrapping="Wrap" Margin="5" Text="{Binding Path=Description}" FontSize="12" FontStyle="Normal" />
+                                            </Border>
+                                        </Expander.Content>
+                                    </Expander>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>
