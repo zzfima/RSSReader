@@ -41,22 +41,6 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <StackPanel>
-                    <TextBox x:Name="txtUrl" Text="{Binding RSSUrl}" Grid.Row="0" Grid.Column="0" Width="130" Height="20"   />
-                    <Button Content="Add Subscription" 
-                            Grid.Row="0" 
-                            VerticalAlignment="Top"
-                            Height="25"  
-                            Grid.Column="0" 
-                            Margin="10"
-                            Width="Auto" 
-                            Background="#FF919137" 
-                            FontSize="14" 
-                            Foreground="#FF000000" 
-                            FontWeight="Bold" 
-                            Command="{Binding AddSubscriptionCommand}"/>
-                </StackPanel>
-
                 <ItemsControl ItemsSource="{Binding RSS_Feeds}"  Grid.Row="0" Grid.Column="1" Margin="10" Width="Auto" x:Name="icFeeds" Background="{x:Null}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>

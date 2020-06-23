@@ -20,7 +20,7 @@ namespace RSS_Module.Services
                          {
                              Title = item.Element("title").Value,
                              Description = item.Element("description").Value
-                         }).Take(10).ToList<Feed>();
+                         }).Take(5).ToList<Feed>();
             return feeds;
         }
     }

@@ -1,6 +1,7 @@
 ﻿using Castle.Windsor;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.Regions;
+using RSS_Module.ViewModel;
 
 namespace RSS_Module
 {
@@ -12,6 +13,7 @@ namespace RSS_Module
         #region Fields
         private IRegionManager _regionManager;
         public static WindsorContainer Container;
+        public static RSSReaderViewModel RssReaderViewModel;
         #endregion
 
         #region Ctor
@@ -34,6 +36,7 @@ namespace RSS_Module
         public static void SetContainer(WindsorContainer container)
         {
             Container = container;
+            RssReaderViewModel = new RSSReaderViewModel();
         }
         #endregion
     }

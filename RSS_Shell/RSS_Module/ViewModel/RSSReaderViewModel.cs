@@ -2,6 +2,7 @@
 using RSS_Module.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace RSS_Module.ViewModel
@@ -70,9 +71,16 @@ namespace RSS_Module.ViewModel
 
         private void ExecuteMyMethod(object parameter)
         {
-            IWEBReaderService<Feed> webReaderService = RSSApplicationModule.Container.Resolve<IWEBReaderService<Feed>>();
-            Feed feed = webReaderService.GetLatest(RSSUrl)[0];
-            RSS_Feeds.Add(feed);
+            try
+            {
+                IWEBReaderService<Feed> webReaderService = RSSApplicationModule.Container.Resolve<IWEBReaderService<Feed>>();
+                var feeds = webReaderService.GetLatest(RSSUrl);
+                RSS_Feeds = new ObservableCollection<Feed>(feeds);
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
         #endregion
 
