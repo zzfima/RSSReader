@@ -18,9 +18,9 @@ namespace RSS_Module.View
     /// <summary>
     /// Interaction logic for RSSReaderView.xaml
     /// </summary>
-    public partial class RSSReaderView : UserControl
+    public partial class RSSReaderMainView : UserControl
     {
-        public RSSReaderView()
+        public RSSReaderMainView()
         {
             InitializeComponent();
         }

@@ -54,12 +54,19 @@
     <Compile Include="RelayCommand.cs" />
     <Compile Include="RSSApplicationModule.cs" />
     <Compile Include="ViewModel\RSSReaderViewModel.cs" />
-    <Compile Include="View\RSSReaderView.xaml.cs">
-      <DependentUpon>RSSReaderView.xaml</DependentUpon>
+    <Compile Include="View\RSSReaderMainView.xaml.cs">
+      <DependentUpon>RSSReaderMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RssReaderTree.xaml.cs">
+      <DependentUpon>RssReaderTree.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="View\RSSReaderView.xaml">
+    <Page Include="View\RSSReaderMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RssReaderTree.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
