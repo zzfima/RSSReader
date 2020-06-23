@@ -1,5 +1,6 @@
 ﻿using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.UnityExtensions;
+using RSS_Module;
 using System.Windows;
 
 namespace RSS_Shell
@@ -23,7 +24,7 @@ namespace RSS_Shell
             base.ConfigureModuleCatalog();
 
             ModuleCatalog moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
-            moduleCatalog.AddModule(typeof(RSS_Module.View.RSSReaderView));
+            moduleCatalog.AddModule(typeof(RSSApplicationModule));
         }
     }
 }

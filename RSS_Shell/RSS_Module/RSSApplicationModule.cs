@@ -3,7 +3,7 @@ using Microsoft.Practices.Prism.Regions;
 
 namespace RSS_Module
 {
-    class RSSApplicationModule : IModule
+    public class RSSApplicationModule : IModule
     {
         private IRegionManager _regionManager;
 
