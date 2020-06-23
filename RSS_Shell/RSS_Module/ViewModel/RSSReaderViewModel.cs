@@ -1,8 +1,7 @@
-﻿using RSS_Module.Model;
-using RSS_Module.Services;
+﻿using RSS_Module.Interfaces;
+using RSS_Module.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Windows;
 using System.Windows.Input;
 
 namespace RSS_Module.ViewModel
@@ -21,8 +20,8 @@ namespace RSS_Module.ViewModel
             AddSubscriptionCommand = new RelayCommand(ExecuteMyMethod, CanExecuteMyMethod);
 
             string url = "http://feeds.feedburner.com/ScottHanselman";
-            var rssService = new RssService(url);
-            RSS_Feeds = new ObservableCollection<Feed>(rssService.GetLatest());
+            var rssService = RSSApplicationModule.Container.Resolve<IWEBReaderService<Feed>>();
+            RSS_Feeds = new ObservableCollection<Feed>(rssService.GetLatest(url));
         }
 
         public ObservableCollection<Feed> RSS_Feeds
@@ -71,9 +70,8 @@ namespace RSS_Module.ViewModel
 
         private void ExecuteMyMethod(object parameter)
         {
-            string url = RSSUrl;
-            RssService rssService = new RssService(url);
-            Feed feed =  rssService.GetLatest()[0];
+            IWEBReaderService<Feed> webReaderService = RSSApplicationModule.Container.Resolve<IWEBReaderService<Feed>>();
+            Feed feed = webReaderService.GetLatest(RSSUrl)[0];
             RSS_Feeds.Add(feed);
         }
         #endregion

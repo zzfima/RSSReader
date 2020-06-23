@@ -1,4 +1,5 @@
-﻿using RSS_Module.Model;
+﻿using RSS_Module.Interfaces;
+using RSS_Module.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -8,18 +9,11 @@ namespace RSS_Module.Services
     /// <summary>
     /// Loading RSS feeds from supplied URL
     /// </summary>
-    public class RssService
+    public class RssService : IWEBReaderService<Feed>
     {
-        public string FeedUrl { get; private set; }
-
-        public RssService(string feedUrl)
+        public IList<Feed> GetLatest(string url)
         {
-            FeedUrl = feedUrl;
-        }
-
-        public List<Feed> GetLatest()
-        {
-            var rssFeed = XDocument.Load(FeedUrl);
+            var rssFeed = XDocument.Load(url);
 
             var feeds = (from item in rssFeed.Descendants("item")
                          select new Feed()
